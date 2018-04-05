@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 7ec2d79eb17bb5948ab3dd24934c94db
+timeCreated: 1522866171
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cheri
+  fontNames:
+  - Cheri
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
