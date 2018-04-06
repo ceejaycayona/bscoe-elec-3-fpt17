@@ -34,52 +34,50 @@ public class Block : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (_moving) {
-			float deltaRotation = rotationSpeed * Time.deltaTime;
-			if (_totalRotation + deltaRotation >= 90) {
-				deltaRotation = 90 - _totalRotation;
-				_moving = false;
-			}
-			if ((_rotationDirection == Direction.West) || (_rotationDirection == Direction.North))
-				transform.RotateAround (_pivot, _axis, deltaRotation);
-			else
-				transform.RotateAround (_pivot, _axis, -deltaRotation);
-
-			_totalRotation += deltaRotation;
-		} else if (Input.GetKeyUp (KeyCode.W)) {
-			box_sound.Play ();
-			moves.Global.move--;
-			move_count++;
-			moveText.text = "Moves: " + moves.Global.move;
-			Rotate (Direction.North);
-		} else if (Input.GetKeyUp (KeyCode.A)) { 
-			box_sound.Play ();
-			moves.Global.move--;
-			move_count++;
-			moveText.text = "Moves: " + moves.Global.move;
-			Rotate (Direction.West);
-		} else if (Input.GetKeyUp (KeyCode.S)) {
-			box_sound.Play ();
-			moves.Global.move--;
-			move_count++;
-			moveText.text = "Moves: " + moves.Global.move;
-			Rotate (Direction.South);
-		} else if (Input.GetKeyUp (KeyCode.D)) {
-			box_sound.Play ();
-			moves.Global.move--;
-			move_count++;
-			moveText.text = "Moves: " + moves.Global.move;
-			Rotate (Direction.East);
-		} else if (moves.Global.move < 0) {
-			gameover.Play ();
-			Invoke ("Reset", 2.5f);
+		if (moves.Global.move < 0) {
 			moves.Global.move = move_count;
-			//Application.LoadLevel(scene.buildIndex);
-		}
-		else if(Input.GetKeyUp(KeyCode.Escape)){
-			Application.LoadLevel("SplashScreen");
-		}
+			Invoke ("Reset", 0f);
+		} else {
+			if (_moving) {
+				float deltaRotation = rotationSpeed * Time.deltaTime;
+				if (_totalRotation + deltaRotation >= 90) {
+					deltaRotation = 90 - _totalRotation;
+					_moving = false;
+				}
+				if ((_rotationDirection == Direction.West) || (_rotationDirection == Direction.North))
+					transform.RotateAround (_pivot, _axis, deltaRotation);
+				else
+					transform.RotateAround (_pivot, _axis, -deltaRotation);
 
+				_totalRotation += deltaRotation;
+			} else if (Input.GetKeyUp (KeyCode.W)) {
+				box_sound.Play ();
+				moves.Global.move--;
+				move_count++;
+				moveText.text = "Moves: " + moves.Global.move;
+				Rotate (Direction.North);
+			} else if (Input.GetKeyUp (KeyCode.A)) { 
+				box_sound.Play ();
+				moves.Global.move--;
+				move_count++;
+				moveText.text = "Moves: " + moves.Global.move;
+				Rotate (Direction.West);
+			} else if (Input.GetKeyUp (KeyCode.S)) {
+				box_sound.Play ();
+				moves.Global.move--;
+				move_count++;
+				moveText.text = "Moves: " + moves.Global.move;
+				Rotate (Direction.South);
+			} else if (Input.GetKeyUp (KeyCode.D)) {
+				box_sound.Play ();
+				moves.Global.move--;
+				move_count++;
+				moveText.text = "Moves: " + moves.Global.move;
+				Rotate (Direction.East);
+			} else if (Input.GetKeyUp (KeyCode.E)) {
+				Application.LoadLevel ("SplashScreen");
+			}
+		}
 	}
 
 	void Rotate(Direction direction){

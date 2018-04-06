@@ -19,7 +19,7 @@ public class MusicPlayer : MonoBehaviour {
 	}
 	void Update () {
 
-		if (Input.GetKeyUp(KeyCode.KeypadEnter)) {
+		if (Input.GetKeyUp(KeyCode.Space)) {
 			Destroy (gameObject);
 			Invoke ("Stage1", 1f);
 			input = false;

@@ -22,14 +22,15 @@ public class HowToPlay : MonoBehaviour {
 	}
 	void Update () {
 
-		if (Input.GetKeyUp(KeyCode.KeypadEnter)) {
+		if (Input.GetKeyUp(KeyCode.Space)) {
 			Destroy (gameObject);
 			Invoke ("Stage1", 1f);
 			input = false;
 		}
-		else if (Input.GetKeyUp(KeyCode.Escape)) {
+		else if (Input.GetKeyUp(KeyCode.E)) {
 			Destroy (gameObject);
-			Invoke ("SplashScreen", 0f);
+			//Invoke ("SplashScreen", 0f);
+			SceneManager.LoadScene("SplashScreen");
 			input = false;
 		}
 	}
